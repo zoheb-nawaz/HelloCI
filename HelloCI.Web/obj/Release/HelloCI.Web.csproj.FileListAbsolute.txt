@@ -1,0 +1,2 @@
+D:\MSBuildExample\HelloCI\HelloCI.Web\obj\Release\HelloCI.Web.csprojResolveAssemblyReference.cache
+D:\MSBuildExample\HelloCI\HelloCI.Web\obj\Release\HelloCI.Web.csproj.CoreCompileInputs.cache
