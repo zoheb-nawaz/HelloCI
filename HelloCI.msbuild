@@ -3,7 +3,7 @@
   <ItemGroup>
     <BuildArtifactsDir Include="BuildArtifacts\" />
     <SolutionFile Include="HelloCI.sln" />
-    <NUnitConsole Include="C:\Program Files (x86)\NUnit 2.6\bin\nunit-console.exe" />
+    <NUnitConsole Include="C:\Program Files (x86)\NUnit 2.6.4\bin\nunit-console.exe" />
     <UnitTestsDLL Include="BuildArtifacts\HelloCI.Web.UnitTests.dll" />
     <TestResultsPath Include="BuildArtifacts\TestResults.xml" />
   </ItemGroup>
