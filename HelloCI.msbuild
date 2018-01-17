@@ -42,6 +42,6 @@
           WorkingDirectory="@(ZipPath)\"
           ZipFileName="@(ZipPath)\$(StringDate)_@(ZipName).zip"
           ZipLevel="9" />
-  
+  </Target>
    
 </Project>
