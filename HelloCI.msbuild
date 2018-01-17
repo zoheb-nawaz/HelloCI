@@ -6,6 +6,8 @@
     <NUnitConsole Include="C:\Program Files (x86)\NUnit 2.6.4\bin\nunit-console.exe" />
     <UnitTestsDLL Include="BuildArtifacts\HelloCI.Web.UnitTests.dll" />
     <TestResultsPath Include="BuildArtifacts\TestResults.xml" />
+	<ZipPath Include="BuildArtifacts\package" />
+	<ZipName Include="HelloWorld" />
   </ItemGroup>
 
   <PropertyGroup>
@@ -30,4 +32,16 @@
   <Target Name="RunUnitTests" DependsOnTargets="Compile">
     <Exec Command='"@(NUnitConsole)" @(UnitTestsDLL) /xml=@(TestResultsPath)' />
   </Target>
+  
+  <Target Name="CreatePackage" DependsOnTargets="RunUnitTests">
+    <PropertyGroup>
+      <StringDate>$([System.DateTime]::Now.ToString('yyyyMMdd'))</StringDate>
+    </PropertyGroup>
+    <MakeDir Directories="@(ZipPath)"/>
+    <Zip Files="@(DebugApplicationFiles)"
+          WorkingDirectory="@(ZipPath)\"
+          ZipFileName="@(ZipPath)\$(StringDate)_@(ZipName).zip"
+          ZipLevel="9" />
+  
+   
 </Project>
