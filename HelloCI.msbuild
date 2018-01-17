@@ -38,7 +38,7 @@
 
  
 <!-- make NuGet package-->
-	<Target Name="NuGet" DependsOnTargets="RunUnitTests">
+	<Target Name="package" DependsOnTargets="RunUnitTests">
 		<MakeDir Directories="BuildArtifacts\lib\net40"/>
 		<MakeDir Directories="BuildArtifacts\nuget"/>
 		
