@@ -14,6 +14,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
     <BuildPlatform Condition=" '$(BuildPlatform)' == '' ">Any CPU</BuildPlatform>
+	<NuGetDir>nuget-tmp</NuGetDir>
   </PropertyGroup>
   
   <Target Name="Clean">
@@ -33,11 +34,21 @@
   <Target Name="RunUnitTests" DependsOnTargets="Compile">
     <Exec Command='"@(NUnitConsole)" @(UnitTestsDLL) /xml=@(TestResultsPath)' />
   </Target>
-  
-  <Target Name="CreatePackage" DependsOnTargets="RunUnitTests"> 
-    <MSBuild.ExtensionPack.Compression.Zip TaskAction="Create" CompressFiles="@(FilesToZip)" ZipFileName="@(ZipName).zip"/>
+
+
+ 
+<!-- make NuGet package-->
+	<Target Name="NuGet" DependsOnTargets="RunUnitTests">
+		<MakeDir Directories="BuildArtifacts\lib\net40"/>
+		<MakeDir Directories="$()\nuget"/>
+		
+		<!-- 1. copy the whole release folder (except the assembly and "normal" readme) and the nuspec file into the temp. NuGet folder -->
+		<ItemGroup>
+			<PackageFiles1
+				Include="BuildArtifacts\_PublishedWebsites\*.*">
+			</PackageFiles1>
+		</ItemGroup>
+		<Copy SourceFiles="@(PackageFiles1)" DestinationFolder="$(NuGetDir)"/> 
   </Target>
-  
-  
    
 </Project>
