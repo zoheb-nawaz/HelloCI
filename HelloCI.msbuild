@@ -40,15 +40,14 @@
 <!-- make NuGet package-->
 	<Target Name="NuGet" DependsOnTargets="RunUnitTests">
 		<MakeDir Directories="BuildArtifacts\lib\net40"/>
-		<MakeDir Directories="$()\nuget"/>
+		<MakeDir Directories="BuildArtifacts\nuget"/>
 		
 		<!-- 1. copy the whole release folder (except the assembly and "normal" readme) and the nuspec file into the temp. NuGet folder -->
 		<ItemGroup>
 			<PackageFiles1
-				Include="BuildArtifacts\_PublishedWebsites\*.*">
+				Include="BuildArtifacts\_PublishedWebsites\**\*.dll">
 			</PackageFiles1>
 		</ItemGroup>
-		<Copy SourceFiles="@(PackageFiles1)" DestinationFolder="$(NuGetDir)"/> 
   </Target>
    
 </Project>
