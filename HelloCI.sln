@@ -1,6 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2024
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloCI.Web.UnitTests", "HelloCI.Web.UnitTests\HelloCI.Web.UnitTests.csproj", "{A443A68E-E795-462E-95C7-AD8455181776}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloCI.Web", "HelloCI.Web\HelloCI.Web.csproj", "{CBB55288-A84F-4EE9-BBC4-D700448A0CEA}"
@@ -28,5 +30,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {843BC723-3096-4C59-B774-7CEE4DE6F316}
 	EndGlobalSection
 EndGlobal

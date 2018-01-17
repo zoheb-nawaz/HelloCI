@@ -8,6 +8,7 @@
     <TestResultsPath Include="BuildArtifacts\TestResults.xml" />
 	<ZipPath Include="BuildArtifacts\package" />
 	<ZipName Include="HelloWorld" />
+	<FilesToZip Include="BuildArtifacts\_PublishedWebsites" />
   </ItemGroup>
 
   <PropertyGroup>
@@ -33,15 +34,10 @@
     <Exec Command='"@(NUnitConsole)" @(UnitTestsDLL) /xml=@(TestResultsPath)' />
   </Target>
   
-  <Target Name="CreatePackage" DependsOnTargets="RunUnitTests">
-    <PropertyGroup>
-      <StringDate>$([System.DateTime]::Now.ToString('yyyyMMdd'))</StringDate>
-    </PropertyGroup>
-    <MakeDir Directories="@(ZipPath)"/>
-    <Zip Files="@(DebugApplicationFiles)"
-          WorkingDirectory="@(ZipPath)\"
-          ZipFileName="@(ZipPath)\$(StringDate)_@(ZipName).zip"
-          ZipLevel="9" />
+  <Target Name="CreatePackage" DependsOnTargets="RunUnitTests"> 
+    <MSBuild.ExtensionPack.Compression.Zip TaskAction="Create" CompressFiles="@(FilesToZip)" ZipFileName="@(ZipName).zip"/>
   </Target>
+  
+  
    
 </Project>
